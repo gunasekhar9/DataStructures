@@ -7,7 +7,7 @@ namespace DataStructures
     public class LinkedList
     {
         internal Node head;
-        internal void Add(int data) 
+        internal void Add(int data)
         {
             Node node = new Node(data);
             if (this.head == null)
@@ -23,23 +23,38 @@ namespace DataStructures
                 }
                 temp.next = node;
             }
-            Console.WriteLine("{0} Inserted into Linked List", node.data);
+            Console.WriteLine("{0} is inserted into the linked list", node.data);
         }
-        internal void Display() 
+        internal void AddInReverseOrder(int data)
+        {
+            Node newNode = new Node(data);
+            if (this.head == null)
+            {
+                this.head = newNode;
+            }
+            else
+            {
+                Node temp = this.head;
+                head = newNode;
+                head.next = temp;
+            }
+        }
+        internal void Display()
         {
             Node temp = this.head;
             if (temp == null)
             {
-                Console.WriteLine("Linked List is Empty");
+                Console.WriteLine("LinkedList is empty");
                 return;
             }
             while (temp != null)
             {
-                Console.WriteLine(temp.data + " ");
+                Console.Write(temp.data + " ");
                 temp = temp.next;
             }
+            Console.WriteLine();
         }
-        internal Node InsertAtParticularPosition(int position, int data) 
+        internal Node InsertAtParticularPosition(int position, int data)
         {
             Node newestNode = new Node(data);
             if (this.head == null)
@@ -65,7 +80,7 @@ namespace DataStructures
             prev.next = newestNode;
             return this.head;
         }
-        internal Node RemoveFirstNode() 
+        internal Node RemoveFirstNode()
         {
             if (this.head == null)
             {
@@ -74,7 +89,7 @@ namespace DataStructures
             this.head = this.head.next;
             return this.head;
         }
-        internal Node RemoveLastNode() 
+        internal Node RemoveLastNode()
         {
             if (head == null)
             {
@@ -92,7 +107,7 @@ namespace DataStructures
             NewNode.next = null;
             return head;
         }
-        internal int Search(int value) 
+        internal int Search(int value)
         {
             Node node = this.head;
             int count = 0;

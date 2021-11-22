@@ -10,8 +10,10 @@ namespace DataStructures
             ln.Add(56);
             ln.Add(30);
             ln.Add(70);
-            int search = ln.Search(30);
-            Console.WriteLine(search);
+            int position = ln.Search(30);
+            position++;
+            ln.InsertAtParticularPosition(position, 40);
+            ln.Display();
         }
     }
 }
