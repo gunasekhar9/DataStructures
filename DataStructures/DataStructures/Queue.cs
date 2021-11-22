@@ -4,60 +4,60 @@ using System.Text;
 
 namespace DataStructures
 {
-    public class Queue
+    class Queue
     {
-        Node front;
-        Node rear;
+        internal Node front;
+        internal Node rear;
+
         public Queue()
         {
-            this.front = this.rear = null;
+            this.front = null;
+            this.rear = null;
         }
-        internal void Enqueue(int data)
+        internal void Enqueu(int data) 
         {
-            Node newNode = new Node(data);
-            // If queue is empty, then new node is front and rear both 
-            if (this.rear == null)
+            Node node = new Node(data);
+            if (front == null)
             {
-                this.front = this.rear = newNode;
+                front = node;
+                rear = node;
             }
             else
             {
-                // Add the new node at the end of queue and change rear
-                this.rear.next = newNode;
-                this.rear = newNode;
+                rear.next = node;
+                rear = node;
             }
-            Console.WriteLine("{0} is inserted into Queue", data);
+            Console.WriteLine("Data is added  to the Queue" + data);
         }
-        internal void Display()
+        internal void Display() 
         {
-            Node temp = this.front;
-            if (temp == null)
+            if (front == null)
             {
                 Console.WriteLine("Queue is empty");
-                return;
             }
-            while (temp != null)
+            else
             {
-                Console.Write(temp.data + " ");
-                temp = temp.next;
+                Node temp = front;
+                Console.Write("Element in Queue is :");
+                while (temp != null)
+                {
+                    Console.Write(temp.data + " ");
+                    temp = temp.next;
+                }
+                Console.WriteLine(" ");
             }
-            Console.WriteLine();
         }
-        internal void Dequeue()
+        internal void Dequeu() 
         {
-            if (this.front == null)
+            if (front == null)
             {
                 Console.WriteLine("Queue is empty");
-                return;
             }
-            Node temp = this.front;
-            this.front = this.front.next;
-            // If front becomes null, then change rear also as null  
-            if (this.front == null)
+            else
             {
-                this.rear = null;
+                Console.WriteLine("perform dequeu");
+                front = front.next;
             }
-            Console.WriteLine("{0} is deleted from the Queue", temp.data);
         }
     }
 }

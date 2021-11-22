@@ -4,60 +4,76 @@ using System.Text;
 
 namespace DataStructures
 {
-    public class Stack
+    class Stack
     {
-        Node top;
-        public Stack()
+        internal Node top;
+        internal Stack()
         {
             this.top = null;
         }
-        public void Push(int data)
+        internal void Add(int data) 
         {
-            Node newNode = new Node(data);
+            Node node = new Node(data);
             if (top == null)
             {
-                newNode.next = null;
+                top = node;
             }
             else
             {
-                newNode.next = top;
+                node.next = top;
+                top = node;
             }
-            top = newNode;
-            Console.WriteLine("{0} is pushed to stack ", data);
+            Console.WriteLine("{0} Inserted into Stack", node.data);
         }
-        internal void Display()
-        {
-            Node temp = this.top;
-            if (temp == null)
-            {
-                Console.WriteLine("Stack is empty");
-                return;
-            }
-            while (temp != null)
-            {
-                Console.Write(temp.data + " ");
-                temp = temp.next;
-            }
-            Console.WriteLine();
-        }
-        internal void Pop()
+        internal void Display() 
         {
             if (top == null)
             {
-                Console.WriteLine("stack is in underflow condition, Deletion is not possible");
-                return;
+                Console.WriteLine("Stack is Empty");
             }
-            Console.WriteLine("{0} is deleted from stack", top.data);
-            top = top.next;
+            else
+            {
+                Node temp = top;
+                Console.Write("Elements in Stack is: ");
+                while (temp != null)
+                {
+                    Console.Write(temp.data + " ");
+                    temp = temp.next;
+                }
+                Console.WriteLine(" ");
+            }
         }
-        internal void Peek()
+        internal void Peek() 
         {
             if (top == null)
             {
-                Console.WriteLine("stack is in undeflow condition");
-                return;
+                Console.WriteLine("Stack is Empty");
             }
-            Console.WriteLine("{0} is on the top of the stack", top.data);
+            else
+            {
+                Console.WriteLine("Data at top is: " + top.data);
+
+            }
+        }
+        internal void Pop() 
+        {
+            if (top == null)
+            {
+                Console.WriteLine("Stack is Empty");
+            }
+            else
+            {
+                Console.WriteLine("Data is at popped out " + top.data);
+                top = top.next;
+            }
+        }
+        internal void Isempty()
+        {
+            while (top != null)
+            {
+                Peek();
+                Pop();
+            }
         }
     }
 }
